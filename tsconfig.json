@@ -7,6 +7,7 @@
     "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
     "types": ["vite/client"],
+    "allowImportingTsExtensions": false,
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx"
   }

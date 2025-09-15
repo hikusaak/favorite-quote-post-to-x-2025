@@ -1,0 +1,56 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.textbox-container {
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.form-control[readonly] {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.btn-copy,
+.btn-post {
+  width: 100%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-spacing {
+  margin-bottom: 10px;
+}
+
+.footer {
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 20px;
+  color: #6c757d;
+  font-size: 1.1em;
+}
+
+.footer a {
+  color: #6c757d;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.notification {
+  background-color: #e2f0d9;
+  border: 1px solid #b2e4b5;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #3c763d;
+}
+
+.text-left {
+  text-align: left;
+}

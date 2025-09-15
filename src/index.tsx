@@ -1,9 +1,7 @@
 import { Hono } from 'hono'
-import { renderer } from './renderer'
+import { CompletePage } from './components/CompletePage'
 
 const app = new Hono()
-
-app.use(renderer)
 
 app.get('/', (c) => {
   return c.text('', 403)
@@ -11,24 +9,20 @@ app.get('/', (c) => {
 
 app.get('/example', (c) => {
   return c.html(
-    htmlBody(
-      {
+    <CompletePage
+      splittedPostData={{
         'fmz-text294': '国連広報センター',
         'fmz-text501':
           '「社会の各個人及び各機関が、この世界人権宣言を常に念頭に置きながら、加盟国自身の人民の間にも、また、…」',
-      },
-      '（開発環境）推し台詞 送信完了 | 幻水総選挙2024'
-    )
+      }}
+      headTitle="（開発環境）推し台詞 送信完了 | 幻水総選挙2024"
+    />
   )
 })
 
-// 同じ URL で使い回すならば、リクエスト元・リクエスト先 の URL によって処理を分岐すると良さそう
 app.post('/', async (c) => {
   const postData = await c.req.text()
   const splittedPostData = splitPostData(postData)
-
-  // TODO: デバッグ用なので production では消す
-  console.debug('splittedPostData:', splittedPostData)
 
   const headTitle = '推し台詞 送信完了 | 幻水総選挙2024'
 
