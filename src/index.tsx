@@ -1,7 +1,10 @@
 import { Hono } from 'hono'
+import { renderer } from './renderer'
 import { CompletePage } from './components/CompletePage'
 
 const app = new Hono()
+
+app.use(renderer)
 
 app.get('/', (c) => {
   return c.text('', 403)
