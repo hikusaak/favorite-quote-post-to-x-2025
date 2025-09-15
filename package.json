@@ -1,0 +1,21 @@
+{
+  "name": "favorite-quote-post-to-x-2025",
+  "version": "0.0.1",
+  "dependencies": {
+    "hono": "4.9.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.2.3",
+    "vite": "6.3.5",
+    "vite-ssr-components": "0.5.1",
+    "wrangler": "4.17.0"
+  },
+  "scripts": {
+    "build": "vite build",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "deploy": "$npm_execpath run build && wrangler deploy",
+    "dev": "vite",
+    "preview": "$npm_execpath run build && vite preview"
+  },
+  "type": "module"
+}
