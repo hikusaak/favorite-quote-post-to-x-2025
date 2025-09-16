@@ -54,7 +54,11 @@ ${webpageUrl}`
         >
           ポスト入力欄に貼り付ける（X へ）
         </button>
-        <button type="button" class="btn btn-primary btn-copy" id="copyButton">
+        <button
+          type="button"
+          class="btn btn-primary btn-copy"
+          onclick="navigator.clipboard.writeText(this.parentNode.querySelector('#targetText').value).then(() => alert('コピーしました！')).catch(() => alert('コピーに失敗しました'))"
+        >
           テキストをコピーする
         </button>
       </div>
@@ -63,36 +67,6 @@ ${webpageUrl}`
         <a href="https://election.suikoden.info" target="_blank" rel="noopener">
           幻水総選挙2025
         </a>
-      </div>
-
-      <div class="modal fade" id="copyModal" tabindex={-1} aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="copyModalLabel">
-                コピー完了
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              テキストがクリップボードにコピーされました！
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                閉じる
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </>
   )
