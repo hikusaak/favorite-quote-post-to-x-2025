@@ -33,7 +33,28 @@ export const renderer = jsxRenderer(({ children }, c) => {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script
+          type="importmap"
+          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Bootstrap import map */}
+          dangerouslySetInnerHTML={{
+            __html: `{
+              "imports": {
+                "@popperjs/core": "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js",
+                "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.esm.min.js"
+              }
+            }`,
+          }}
+        />
+        <script
+          type="module"
+          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Bootstrap import map */}
+          dangerouslySetInnerHTML={{
+            __html: `import * as bootstrap from 'bootstrap'`,
+          }}
+        />
+      </body>
     </html>
   )
 })
