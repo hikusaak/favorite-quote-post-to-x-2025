@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { PostComplete } from './components/PostComplete'
-import { parseFormData } from './lib/form'
+import { parseFormData } from './lib/stringOperation'
 import { renderer } from './renderer'
 
 const app = new Hono<{ Variables: { headTitle?: string } }>()
