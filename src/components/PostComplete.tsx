@@ -50,7 +50,7 @@ ${webpageUrl}`
         <button
           type="button"
           class="btn btn-primary btn-post btn-spacing"
-          id="postButton"
+          onclick="const textToPost = this.parentNode.querySelector('#targetText').value; const xUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(textToPost); window.open(xUrl, '_blank');"
         >
           ポスト入力欄に貼り付ける（X へ）
         </button>
