@@ -1,66 +1,40 @@
 import { Hono } from 'hono'
 import { PostComplete } from './components/PostComplete'
+import { parseFormData } from './lib/form'
 import { renderer } from './renderer'
 
-const app = new Hono()
+const app = new Hono<{ Variables: { headTitle?: string } }>()
+app.use('*', renderer)
 
-app.use(renderer)
-
-app.get('/', (c) => {
-  return c.text('', 403)
+app.get('/healthcheck', (c) => {
+  return c.text('', 200)
 })
 
-app.get('/foo', (c) => {
+app.get('/example', (c) => {
   const sampleData = {
     'fmz-text294': '国連広報センター',
     'fmz-text501':
       '「社会の各個人及び各機関が、この世界人権宣言を常に念頭に置きながら、加盟国自身の人民の間にも、また、…」',
   }
-  return c.render(<PostComplete splittedPostData={sampleData} />)
-})
+  c.set('headTitle', '(dev) 推し台詞 送信完了 | 幻水総選挙2025')
 
-app.get('/example', (c) => {
-  return c.html(
-    htmlBody(
-      {
-        'fmz-text294': '国連広報センター',
-        'fmz-text501':
-          '「社会の各個人及び各機関が、この世界人権宣言を常に念頭に置きながら、加盟国自身の人民の間にも、また、…」',
-      },
-      '（開発環境）推し台詞 送信完了 | 幻水総選挙2024'
-    )
-  )
+  return c.render(<PostComplete splittedPostData={sampleData} />)
 })
 
 // 同じ URL で使い回すならば、リクエスト元・リクエスト先 の URL によって処理を分岐すると良さそう
 app.post('/', async (c) => {
   const postData = await c.req.text()
-  const splittedPostData = splitPostData(postData)
+  const splittedPostData = parseFormData(postData)
 
-  // TODO: デバッグ用なので production では消す
+  // TODO: デバッグ用なので production では消す（物理でも分岐でも）
   console.debug('splittedPostData:', splittedPostData)
 
-  const headTitle = '推し台詞 送信完了 | 幻水総選挙2024'
+  // const headTitle = '推し台詞 送信完了 | 幻水総選挙2024'
+  c.set('headTitle', '推し台詞 送信完了 | 幻水総選挙2025')
 
-  return c.html(htmlBody(splittedPostData, headTitle))
+  // return c.html(htmlBody(splittedPostData, headTitle))
+  return c.render(<PostComplete splittedPostData={splittedPostData} />)
 })
-
-const splitPostData = (postData: string) => {
-  // TODO: デバッグ用なので production では消す
-  console.log('postData:', postData)
-
-  const decodedData = decodeURIComponent(postData)
-  const params = decodedData.split('&')
-  const splittedPostData: { [key: string]: string } = {}
-
-  params.forEach((param) => {
-    const [key, value] = param.split('=')
-
-    splittedPostData[key] = value
-  })
-
-  return splittedPostData
-}
 
 const targetText = (splittedPostData: { [key: string]: string }): string => {
   // -  フォームID(必ず送信)  fmz-fid
@@ -91,7 +65,7 @@ const htmlBody = (
     <!DOCTYPE html>
     <html lang="ja">
     <head>
-      <meta charset="UTF-8">
+      <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>${headTitle}</title>
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
