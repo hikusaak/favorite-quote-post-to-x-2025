@@ -30,9 +30,6 @@ app.post('/', async (c) => {
   const splittedPostData = parseFormData(postData)
   c.set('headTitle', '推し台詞 送信完了 | 幻水総選挙2025')
 
-  // NOTE: デバッグ用なので production では消していい
-  console.debug('splittedPostData:', splittedPostData)
-
   return c.render(<PostComplete splittedPostData={splittedPostData} />)
 })
 
