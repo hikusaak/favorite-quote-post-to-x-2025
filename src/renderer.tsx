@@ -37,7 +37,6 @@ export const renderer = jsxRenderer(({ children }, c) => {
         {children}
         <script
           type="importmap"
-          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Bootstrap import map */}
           dangerouslySetInnerHTML={{
             __html: `{
               "imports": {
@@ -49,9 +48,9 @@ export const renderer = jsxRenderer(({ children }, c) => {
         />
         <script
           type="module"
-          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Bootstrap import map */}
           dangerouslySetInnerHTML={{
-            __html: `import * as bootstrap from 'bootstrap'`,
+            __html: `import * as bootstrap from 'bootstrap'
+window.bootstrap = bootstrap`,
           }}
         />
       </body>
