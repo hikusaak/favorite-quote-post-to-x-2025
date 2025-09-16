@@ -4,18 +4,20 @@ type Props = {
 
 const PostComplete = ({ splittedPostData }: Props) => {
   const targetText = () => {
+    // NOTE: 2024年のキー名
     // -  フォームID(必ず送信)  fmz-fid
     // 2  キャラクター名  fmz-text294
     // 3  推し台詞  fmz-text501
     // 4  セリフの登場作品  fmz-choi695
     // 5  セリフが登場するシーン・イベント（書籍の  fmz-text001
     // 6  メールアドレス（必要な方のみ）  fmz-tkem528
+    // FIXME: キーの名称は決まってから変更する必要がある
     const characterName = splittedPostData['fmz-text294']
     const recommendedQuote = splittedPostData['fmz-text501']
     const hashtag = '#幻水総選挙推し台詞'
-    const webpageUrl = 'https://election.suikoden.info/event/serif/'
+    const webpageUrl = 'https://election.suikoden.info/event/quote/'
 
-    return `幻水総選挙2024 ${hashtag} に応募しました！
+    return `幻水総選挙2025 ${hashtag} に応募しました！
 
 ${characterName}
 ${recommendedQuote}
@@ -55,6 +57,12 @@ ${webpageUrl}`
         <button type="button" class="btn btn-primary btn-copy" id="copyButton">
           テキストをコピーする
         </button>
+      </div>
+
+      <div class="footer">
+        <a href="https://election.suikoden.info" target="_blank" rel="noopener">
+          幻水総選挙2025
+        </a>
       </div>
 
       <div class="modal fade" id="copyModal" tabindex={-1} aria-hidden="true">
