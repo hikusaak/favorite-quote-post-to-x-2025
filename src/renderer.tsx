@@ -37,6 +37,7 @@ export const renderer = jsxRenderer(({ children }, c) => {
         {children}
         <script
           type="importmap"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: ここは dangerous で問題ない
           dangerouslySetInnerHTML={{
             __html: `{
               "imports": {
@@ -48,9 +49,19 @@ export const renderer = jsxRenderer(({ children }, c) => {
         />
         <script
           type="module"
+          // Hono はサーバサイドのフレームワークなので window.bootstrap を定義しておく
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: ここは dangerous で問題ない
           dangerouslySetInnerHTML={{
             __html: `import * as bootstrap from 'bootstrap'
-window.bootstrap = bootstrap`,
+
+                      document.addEventListener('DOMContentLoaded', function() {
+                        const popoverButton = document.getElementById('popoverButton')
+                        if (popoverButton) {
+                          new bootstrap.Popover(popoverButton)
+                        }
+                      })
+
+                      window.bootstrap = bootstrap`,
           }}
         />
       </body>
