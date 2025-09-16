@@ -2,10 +2,13 @@
   "name": "favorite-quote-post-to-x-2025",
   "version": "0.0.1",
   "dependencies": {
+    "@popperjs/core": "2.11.8",
+    "bootstrap": "5.3.8",
     "hono": "4.9.7"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.2.3",
+    "@types/bootstrap": "^5.2.10",
     "vite": "6.3.5",
     "vite-ssr-components": "0.5.1",
     "wrangler": "4.17.0"

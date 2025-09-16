@@ -1,0 +1,58 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+
+body {
+  background-color: #f8f9fa;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.textbox-container {
+  margin: 50px auto;
+  max-width: 600px;
+}
+
+.form-control[readonly] {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.btn-copy,
+.btn-post {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.btn-spacing {
+  margin-bottom: 10px;
+}
+
+.footer {
+  border-top: 1px solid #dee2e6;
+  color: #6c757d;
+  font-size: 1.1em;
+  margin-top: 20px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.footer a {
+  color: #6c757d;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.notification {
+  background-color: #e2f0d9;
+  border-radius: 5px;
+  border: 1px solid #b2e4b5;
+  color: #3c763d;
+  margin-bottom: 20px;
+  padding: 15px;
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
