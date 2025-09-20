@@ -1,58 +1,205 @@
-@import 'bootstrap/dist/css/bootstrap.css';
+@charset "utf-8";
 
+/* 応募完了
+============================================================ */
+:root {
+  --color-normal: #222;
+  --color-gry-01: #f7f7f7;
+  --color-gry-02: #dbdbdb;
+  --color-bl-01: #d9edf7;
+}
+* {
+  box-sizing: border-box;
+}
 body {
-  background-color: #f8f9fa;
-  font-family: 'Noto Sans JP', sans-serif;
+  position: relative;
+  min-height: 100vh;
+  line-height: 1.58;
+  letter-spacing: 0.08em;
+  color: var(--color-normal);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: justify;
+  font-family: "Noto Sans JP", sans-serif;
+  font-feature-settings: "palt";
 }
-
-.textbox-container {
-  margin: 50px auto;
-  max-width: 600px;
-}
-
-.form-control[readonly] {
-  background-color: #e9ecef;
-  color: #495057;
-}
-
-.btn-copy,
-.btn-post {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  width: 100%;
-}
-
-.btn-spacing {
-  margin-bottom: 10px;
-}
-
 .footer {
-  border-top: 1px solid #dee2e6;
-  color: #6c757d;
-  font-size: 1.1em;
-  margin-top: 20px;
-  padding: 10px 0;
-  text-align: center;
+  margin-top: 4rem;
+  font-size: 0.9em;
 }
 
-.footer a {
-  color: #6c757d;
-  text-decoration: none;
+a {
+  color: blue;
+  &:hover {
+    text-decoration: none;
+  }
+}
+a + .fa-solid {
+  display: inline-block;
+  margin-left: 0.25em;
+}
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-.footer a:hover {
-  text-decoration: underline;
+.wrapper {
+  width: min(600px, 100%);
+  padding: 3rem;
+  background: #fff;
+}
+.main {
+  .btn {
+    display: block;
+    width: calc(100% - 6rem);
+    margin: 0 auto 0.75rem;
+    padding: 1rem;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0px 3px 0px #1567C3;
+    border-radius: 3rem;
+    background: #1e90ff;
+    transition: background 0.2s, top 0.2s;
+    &:hover {
+      background: #1567C3;
+    }
+    &:active {
+      position: relative;
+      top: 3px;
+      box-shadow: none;
+    }
+  }
+  h1 {
+    margin: 0;
+    a {
+      display: block;
+      width: fit-content;
+      color: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+  h2 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  .box__detail {
+    margin: 2rem 0;
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 1.5rem;
+      line-height: inherit;
+      border: 1px solid var(--color-gry-02);
+      border-radius: 0.5rem;
+      background: var(--color-bl-01);
+    }
+  }
 }
 
-.notification {
-  background-color: #e2f0d9;
-  border-radius: 5px;
-  border: 1px solid #b2e4b5;
-  color: #3c763d;
-  margin-bottom: 20px;
-  padding: 15px;
-  text-align: center;
+body.modal-open {
+  height: 100vh;
 }
-
-.text-left {
-  text-align: left;
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(400px, calc(100% - 2rem));
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s;
+  z-index: 2;
+  h3 {
+    margin: 0 0 0.5rem;
+  }
+  .btn-close {
+    background: var(--color-gry-02);
+    &.--close-01 {
+      position: absolute;
+      top: -1.5rem;
+      right: -1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.5rem;
+      border-radius: 50%;
+    }
+    &.--close-02 {
+      display: block;
+      width: 100%;
+      margin: 2rem auto 0;
+      padding: 0.75rem 0;
+      border-radius: 1rem;
+    }
+  }
+}
+.modal:not(.show) {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+.modal-backdrop.show {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100lvh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gry-01);
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div {
+      margin: 0 0.5rem;
+    }
+  }
+}
+@media (max-width: 767.98px) {
+  .footer {
+    margin-top: 3rem;
+    div {
+      margin: 0.5rem 0 0;
+      text-align: center;
+    }
+  }
+  .wrapper {
+    padding: 1.5rem;
+  }
+  .main {
+    h1 a {
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+    }
+    .btn {
+      width: 100%;
+    }
+  }
+  .modal {
+    padding: 2rem 1.5rem;
+    .btn-close.--close-01 {
+      right: 1rem;
+    }
+  }
 }

@@ -31,78 +31,73 @@ ${webpageUrl}`
 
   return (
     <>
-      <div class="container textbox-container">
-        <h2 class="text-center mb-4">応募完了</h2>
+      <div class="wrapper">
+        <main class="main">
+          <h1><a href="https://election.suikoden.info" target="_blank" rel="noopener">幻水総選挙2025</a></h1>
+          <h2>応募完了</h2>
 
-        <div class="notification">
-          <div class="text-left">ご応募ありがとうございました。</div>
-          <div class="text-left">
-            応募内容をポストするボタンを用意してありますので、よろしければご利用ください。
-          </div>
-          <div class="text-left">※ポストは必須ではありません</div>
-          <div class="text-left">
-            ※このページは閉じても問題ありません（閉じると戻ることはできません）
-          </div>
-        </div>
+          <section class="sec">
+            <div class="box box__text">
+              <p>ご応募ありがとうございました。<br />応募内容をポストするボタンを用意してありますので、よろしければご利用ください。</p>
+              <p>※ポストは必須ではありません。<br />※このページは閉じても問題ありません。（閉じると戻ることはできません）</p>
+            </div>
+            <div class="box box__detail">
+              <textarea
+                class="form-control"
+                id="targetText"
+                rows={TEXTAREA_ROWS}
+                readonly
+              >
+                {targetText()}
+              </textarea>
+            </div>
+          </section>
 
-        <div class="mb-3">
-          <textarea
-            class="form-control"
-            id="targetText"
-            rows={TEXTAREA_ROWS}
-            readonly
+          <button
+            type="button"
+            class="btn btn-primary btn-post"
+            onclick="window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(document.getElementById('targetText').value)}`, '_blank')"
           >
-            {targetText()}
-          </textarea>
-        </div>
-        <button
-          type="button"
-          class="btn btn-primary btn-post btn-spacing"
-          onclick="window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(document.getElementById('targetText').value)}`, '_blank')"
-        >
-          ポスト入力欄に貼り付ける（X へ）
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary btn-copy"
-          onclick="navigator.clipboard.writeText(document.getElementById('targetText').value).then(() => new bootstrap.Modal(document.getElementById('copyModal')).show()).catch(() => alert('コピーに失敗しました'))"
-        >
-          テキストをコピーする
-        </button>
-      </div>
-
-      <div class="footer">
-        <a href="https://election.suikoden.info" target="_blank" rel="noopener">
-          幻水総選挙2025
-        </a>
+            ポスト入力欄に貼り付ける（X へ）
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary btn-copy"
+            onclick="navigator.clipboard.writeText(document.getElementById('targetText').value).then(() => new bootstrap.Modal(document.getElementById('copyModal')).show()).catch(() => alert('コピーに失敗しました'))"
+          >
+            テキストをコピーする
+          </button>
+        </main>
+        <footer class="footer">
+          <div>
+            <a href="https://election.suikoden.info" target="_blank" rel="noopener">幻水総選挙2025 Webサイト</a><i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+          <div>
+            <a href="https://x.com/gensosenkyo" target="_blank" rel="noopener">幻水総選挙 X（旧Twitter）</a><i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </footer>
       </div>
 
       <div class="modal fade" id="copyModal" tabindex={-1} aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="copyModalLabel">
-                コピー完了
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              テキストをクリップボードにコピーしました！
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                閉じる
-              </button>
-            </div>
+            <h3>コピー完了</h3>
+            <button
+              type="button"
+              class="btn-close --close-01"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <p>テキストをクリップボードにコピーしました！</p>
+            <button
+              type="button"
+              class="btn-close --close-02"
+              data-bs-dismiss="modal"
+            >
+              閉じる
+            </button>
           </div>
         </div>
       </div>
