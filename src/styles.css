@@ -157,7 +157,7 @@ body.modal-open {
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   body {
     display: flex;
     flex-direction: column;
@@ -174,7 +174,7 @@ body.modal-open {
     }
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 599.98px) {
   .footer {
     margin-top: 3rem;
     div {
