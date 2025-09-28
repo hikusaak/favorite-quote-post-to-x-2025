@@ -15,7 +15,7 @@ const PostComplete = ({ splittedPostData }: Props) => {
 
   // FIXME: キーの名称は作成フォームにて確定してから変更する必要がある
   const characterName = splittedPostData['fmz-text294']
-  const recommendedQuote = splittedPostData['fmz-text501']
+  const favoriteQuote = splittedPostData['fmz-text501']
   const hashtag = '#幻水総選挙推し台詞'
   const webpageUrl = 'https://election.suikoden.info/event/quote/'
 
@@ -23,7 +23,7 @@ const PostComplete = ({ splittedPostData }: Props) => {
     return `幻水総選挙2025 ${hashtag} に応募しました！
 
 ${characterName}
-${recommendedQuote}
+${favoriteQuote}
 
 ※応募はこちらから👇
 ${webpageUrl}`
@@ -33,13 +33,29 @@ ${webpageUrl}`
     <>
       <div class="wrapper">
         <main class="main">
-          <h1><a href="https://election.suikoden.info" target="_blank" rel="noopener">幻水総選挙2025</a></h1>
+          <h1>
+            <a
+              href="https://election.suikoden.info"
+              target="_blank"
+              rel="noopener"
+            >
+              幻水総選挙2025
+            </a>
+          </h1>
           <h2>応募完了</h2>
 
           <section class="sec">
             <div class="box box__text">
-              <p>ご応募ありがとうございました。<br />応募内容をポストするボタンを用意してありますので、よろしければご利用ください。</p>
-              <p>※ポストは必須ではありません。<br />※このページは閉じても問題ありません。（閉じると戻ることはできません）</p>
+              <p>
+                ご応募ありがとうございました。
+                <br />
+                応募内容をポストするボタンを用意してありますので、よろしければご利用ください。
+              </p>
+              <p>
+                ※ポストは必須ではありません。
+                <br />
+                ※このページは閉じても問題ありません。（閉じると戻ることはできません）
+              </p>
             </div>
             <div class="box box__detail">
               <textarea
@@ -70,10 +86,20 @@ ${webpageUrl}`
         </main>
         <footer class="footer">
           <div>
-            <a href="https://election.suikoden.info" target="_blank" rel="noopener">幻水総選挙2025 Webサイト</a><i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <a
+              href="https://election.suikoden.info"
+              target="_blank"
+              rel="noopener"
+            >
+              幻水総選挙2025 Webサイト
+            </a>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </div>
           <div>
-            <a href="https://x.com/gensosenkyo" target="_blank" rel="noopener">幻水総選挙 X（旧Twitter）</a><i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <a href="https://x.com/gensosenkyo" target="_blank" rel="noopener">
+              幻水総選挙 X（旧Twitter）
+            </a>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </div>
         </footer>
       </div>
