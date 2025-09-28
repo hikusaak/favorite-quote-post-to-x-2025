@@ -40,18 +40,6 @@ export const renderer = jsxRenderer(({ children }, c) => {
       </head>
       <body>
         {children}
-        <script
-          type="importmap"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: ここは dangerous で問題ない
-          dangerouslySetInnerHTML={{
-            __html: `{
-              "imports": {
-                "@popperjs/core": "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js",
-                "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.esm.min.js"
-              }
-            }`,
-          }}
-        />
         <script type="module" src="/client.js"></script>
       </body>
     </html>

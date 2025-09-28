@@ -5,7 +5,7 @@ type Props = {
 const PostComplete = ({ splittedPostData }: Props) => {
   const TEXTAREA_ROWS = 8
 
-  // NOTE: 2024年のキー名
+  // NOTE: 2025年のキー名
   // -  フォームID(必ず送信)  fmz-fid
   // 2  キャラクター名  fmz-text294
   // 3  推し台詞  fmz-text501
@@ -13,7 +13,6 @@ const PostComplete = ({ splittedPostData }: Props) => {
   // 5  セリフが登場するシーン・イベント（書籍の  fmz-text001
   // 6  メールアドレス（必要な方のみ）  fmz-tkem528
 
-  // FIXME: キーの名称は作成フォームにて確定してから変更する必要がある
   const characterName = splittedPostData['fmz-text294']
   const favoriteQuote = splittedPostData['fmz-text501']
   const hashtag = '#幻水総選挙推し台詞'
