@@ -13,7 +13,10 @@ export const renderer = jsxRenderer(({ children }, c) => {
         <meta name="robots" content="noindex, nofollow" />
         <title>{title}</title>
         <meta property="og:locale" content="ja_JP" />
-        <meta property="og:image" content="https://thanks-recommended-quotes-vote.suikoden.info/ogp.png" />
+        <meta
+          property="og:image"
+          content="https://thanks-favorite-quotes-vote.suikoden.info/ogp.png"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@gensosenkyo" />
         <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
@@ -21,9 +24,18 @@ export const renderer = jsxRenderer(({ children }, c) => {
         <link rel="apple-touch-icon" href="/favicon-180x180.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
         <Link href="/src/styles.css" rel="stylesheet" />
       </head>
       <body>
